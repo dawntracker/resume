@@ -97,8 +97,7 @@ img {
   transform: translateX(-50%);
   width: 200px;
   height: 200px;
-  background: #000000;
-  border: 1px solid var(--border);
+  background: transparent;
   pointer-events: none;
   z-index: 1;
 }
