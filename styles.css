@@ -94,7 +94,7 @@ img {
 
 .panel-content {
   height: 100%;
-  padding: calc(var(--header-height) + 2rem) 3rem 110px;
+  padding: calc(var(--header-height) + 2rem) 3rem 111px;
   max-width: calc(var(--max-width) + 6rem);
   margin: 0 auto;
   overflow-y: auto;
@@ -694,7 +694,7 @@ img {
 
 @media (max-width: 900px) {
   .panel-content {
-    padding: calc(var(--header-height) + 1.5rem) 1.5rem 110px;
+    padding: calc(var(--header-height) + 1.5rem) 1.5rem 111px;
     justify-content: flex-start;
   }
 
