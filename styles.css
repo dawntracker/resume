@@ -98,6 +98,7 @@ img {
   width: 200px;
   height: 200px;
   background: #000000;
+  border: 1px solid var(--border);
   pointer-events: none;
   z-index: 1;
 }
