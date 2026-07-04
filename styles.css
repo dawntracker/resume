@@ -13,6 +13,7 @@
   --font-sans: "DM Sans", system-ui, sans-serif;
   --max-width: 1080px;
   --header-height: 72px;
+  --panel-bottom-gap: 200px;
 }
 
 *,
@@ -108,7 +109,7 @@ img {
 
 .panel-content {
   height: 100%;
-  padding: calc(var(--header-height) + 2rem) 3rem 200px;
+  padding: calc(var(--header-height) + 2rem) 3rem var(--panel-bottom-gap);
   max-width: calc(var(--max-width) + 6rem);
   margin: 0 auto;
   overflow-y: auto;
@@ -707,9 +708,19 @@ img {
 /* Responsive */
 
 @media (max-width: 900px) {
+  :root {
+    --panel-bottom-gap: calc(200px + 8rem + env(safe-area-inset-bottom, 0px));
+  }
+
   .panel-content {
-    padding: calc(var(--header-height) + 1.5rem) 1.5rem 200px;
+    padding: calc(var(--header-height) + 1.5rem) 1.5rem var(--panel-bottom-gap);
     justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  .scroll-controls {
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   }
 
   .hero-layout {
@@ -774,6 +785,9 @@ img {
 
   .panel-dots {
     right: 0.75rem;
+    bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px));
+    top: auto;
+    transform: none;
     gap: 0.45rem;
   }
 
