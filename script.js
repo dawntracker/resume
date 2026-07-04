@@ -64,6 +64,34 @@ scrollNext.addEventListener("click", () => {
   scrollToPanel(getActiveIndex() + 1);
 });
 
+function isTypingTarget(element) {
+  return (
+    element instanceof HTMLInputElement ||
+    element instanceof HTMLTextAreaElement ||
+    element instanceof HTMLSelectElement ||
+    element?.isContentEditable
+  );
+}
+
+document.addEventListener("keydown", (event) => {
+  if (isTypingTarget(event.target)) return;
+
+  const activeIndex = getActiveIndex();
+  let targetIndex = null;
+
+  if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+    targetIndex = activeIndex - 1;
+  } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+    targetIndex = activeIndex + 1;
+  }
+
+  if (targetIndex === null) return;
+  if (targetIndex < 0 || targetIndex >= panels.length) return;
+
+  event.preventDefault();
+  scrollToPanel(targetIndex);
+});
+
 let hintHidden = false;
 track.addEventListener("scroll", () => {
   if (!hintHidden && track.scrollLeft > 40) {
