@@ -778,6 +778,276 @@ img {
   align-items: start;
 }
 
+.about-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-zombie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.zombie {
+  position: relative;
+  width: 120px;
+  height: 210px;
+  animation: zombie-sway 4s ease-in-out infinite;
+}
+
+.zombie-glow {
+  position: absolute;
+  inset: -35%;
+  background: radial-gradient(circle, rgba(34, 255, 136, 0.45) 0%, transparent 68%);
+  animation: zombie-glow-pulse 2.2s ease-in-out infinite;
+  z-index: 0;
+}
+
+.zombie-head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 78px;
+  height: 82px;
+  transform: translateX(-50%);
+  background: linear-gradient(160deg, #5dff9e 0%, #1faa62 55%, #0d6b3f 100%);
+  border: 2px solid rgba(180, 255, 210, 0.35);
+  border-radius: 42% 42% 38% 38%;
+  box-shadow:
+    0 0 18px rgba(34, 255, 136, 0.55),
+    inset 0 -8px 16px rgba(0, 80, 40, 0.35);
+  z-index: 2;
+  animation: zombie-head-bob 4s ease-in-out infinite;
+}
+
+.zombie-brain {
+  position: absolute;
+  top: -6px;
+  left: 18px;
+  width: 28px;
+  height: 16px;
+  background: #ff8fcb;
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 10px rgba(255, 120, 200, 0.45);
+  animation: brain-wiggle 3s ease-in-out infinite;
+}
+
+.zombie-eye {
+  position: absolute;
+  top: 34px;
+  width: 16px;
+  height: 16px;
+  background: #0a1a12;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(34, 255, 136, 0.9);
+}
+
+.zombie-eye::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  background: #22ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22ff88, 0 0 14px rgba(34, 255, 136, 0.8);
+  animation: eye-glow 1.6s ease-in-out infinite;
+}
+
+.zombie-eye--left {
+  left: 14px;
+}
+
+.zombie-eye--right {
+  right: 14px;
+}
+
+.zombie-eye--right::after {
+  animation-delay: 0.4s;
+}
+
+.zombie-mouth {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  width: 34px;
+  height: 14px;
+  transform: translateX(-50%);
+  background: #0a1a12;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.zombie-mouth::before,
+.zombie-mouth::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  width: 5px;
+  height: 8px;
+  background: #dfffe8;
+  border-radius: 1px;
+}
+
+.zombie-mouth::before {
+  left: 6px;
+}
+
+.zombie-mouth::after {
+  right: 6px;
+}
+
+.zombie-neck {
+  position: absolute;
+  top: 76px;
+  left: 50%;
+  width: 28px;
+  height: 18px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #2bc974, #168a4f);
+  border-radius: 0 0 8px 8px;
+  z-index: 1;
+}
+
+.zombie-torso {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  width: 72px;
+  height: 78px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #3ddf88 0%, #148a4f 100%);
+  border: 2px solid rgba(180, 255, 210, 0.25);
+  border-radius: 18px 18px 24px 24px;
+  box-shadow: 0 0 16px rgba(34, 255, 136, 0.35);
+  z-index: 1;
+}
+
+.zombie-torso::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 12px;
+  width: 44px;
+  height: 3px;
+  background: rgba(0, 50, 30, 0.45);
+  border-radius: 999px;
+  box-shadow: 0 10px 0 rgba(0, 50, 30, 0.35);
+}
+
+.zombie-arm {
+  position: absolute;
+  top: 98px;
+  width: 46px;
+  height: 14px;
+  background: linear-gradient(90deg, #2bc974, #4dff9e);
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(34, 255, 136, 0.4);
+  z-index: 3;
+}
+
+.zombie-arm::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 18px;
+  height: 18px;
+  background: #3ddf88;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(34, 255, 136, 0.5);
+}
+
+.zombie-arm--left {
+  left: -8px;
+  transform-origin: right center;
+  animation: zombie-arm-left 3.5s ease-in-out infinite;
+}
+
+.zombie-arm--left::after {
+  left: -2px;
+}
+
+.zombie-arm--right {
+  right: -8px;
+  transform-origin: left center;
+  animation: zombie-arm-right 3.5s ease-in-out infinite;
+}
+
+.zombie-arm--right::after {
+  right: -2px;
+}
+
+@keyframes zombie-sway {
+  0%, 100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-6px);
+  }
+}
+
+@keyframes zombie-glow-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes zombie-head-bob {
+  0%, 100% {
+    transform: translateX(-50%) rotate(-3deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(3deg);
+  }
+}
+
+@keyframes brain-wiggle {
+  0%, 100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(6deg) translateY(-2px);
+  }
+}
+
+@keyframes eye-glow {
+  0%, 100% {
+    opacity: 0.7;
+    box-shadow: 0 0 6px #22ff88, 0 0 12px rgba(34, 255, 136, 0.6);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 12px #22ff88, 0 0 22px rgba(34, 255, 136, 1);
+  }
+}
+
+@keyframes zombie-arm-left {
+  0%, 100% {
+    transform: rotate(18deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes zombie-arm-right {
+  0%, 100% {
+    transform: rotate(-22deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
 .about-lead {
   font-size: 1.15rem;
   line-height: 1.7;
